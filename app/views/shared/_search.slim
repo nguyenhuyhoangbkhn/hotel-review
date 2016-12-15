@@ -1,0 +1,52 @@
+.modal.fade aria-hidden="true" aria-labelledby="myModalLabel" id="search" role="dialog" tabindex="-1"
+  .modal-form
+    .modal-content
+      .modal-header
+        strong Search Hotel
+        button.close aria-hidden="true" data-dismiss="modal" type="button"  ×
+      .modal-body
+        .row
+          .col-sm-12
+            = form_tag "", url: hotels_path, method: :get, class: "form-horizontal" do |f|
+              .ibox-content
+                .row
+                  .col-md-6
+                    .form-group
+                      .col-sm-3
+                        label.control-label = t(".name")
+                      .col-sm-9
+                        = text_field_tag :name, params[:name], class: "form-control"
+                  .col-md-6
+                    .form-group
+                      .col-sm-3
+                        label.control-label = t(".countRoom")
+                      .col-sm-9
+                        = text_field_tag :countRoom,
+                          params[:countRoom], class: "form-control"
+
+                .row
+                  .col-md-6
+                    .form-group
+                      .col-sm-3
+                        label.control-label = t(".price")
+                      .col-sm-9
+                        = text_field_tag :start_price, params[:start_price],
+                          class: "form-control start-range js-datepicker"
+                        | ~
+                        = text_field_tag :end_price, params[:end_price],
+                          class: "form-control end-range js-datepicker"
+                  .col-md-6
+                    .form-group
+                      .col-sm-3
+                        label.control-label = t(".score")
+                      .col-sm-9
+                        = text_field_tag :start_score, params[:start_score],
+                          class: "form-control start-range js-datepicker"
+                        | ~
+                        = text_field_tag :end_score, params[:end_score],
+                          class: "form-control end-range js-datepicker"
+                .clearfix
+                .ibox-footer.text-center
+                  = button_tag type: :submit, class: "btn btn-danger" do
+                    i.fa.fa-search>
+                    = t(".search")

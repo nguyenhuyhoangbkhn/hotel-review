@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @provincial.name
+p
+  strong Ordinate:
+  = @provincial.ordinate
+p
+  strong Province kind:
+  = @provincial.province_kind
+
+= link_to 'Edit', edit_admin_provincial_path(@provincial)
+'|
+= link_to 'Back', admin_provincials_path

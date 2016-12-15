@@ -1,0 +1,31 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.margin-top-10{
+  margin-top: 10px;
+}
+.container-fluid .well-sm {
+  padding: 0px;
+  border-radius: 3px;
+}
+.container-fluid .well {
+  background-color: rgba(63, 195, 75, 0.07);
+  border: 1px solid rgba(193, 193, 193, 0.1);
+}
+
+.carousel-inner{
+  width:100%;
+  max-height: 400px !important;
+}
+
+.top-hotel {
+  padding-right: 36px;
+  padding-bottom: 36px;
+  padding-left: 36px;
+}
+.nav-pills > li > a {
+    border-radius: 0;
+    border-top: 3px solid transparent;
+    color: black !important;
+}

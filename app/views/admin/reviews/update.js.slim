@@ -1,0 +1,11 @@
+| $('#user_star').raty({
+|  score: <%= @review.rating %>,
+|  path: '/assets',
+|  click: function(score, evt) {
+|    $.ajax({
+|      url: '/ratings/' + <%= @review.id %>,
+|      type: 'PATCH',
+|      data: { score: rating }
+|    }).done(function (data){});
+|  }
+| });

@@ -1,0 +1,27 @@
+h1 Listing provincials
+
+.row
+  .col-sm-12
+    table.table.table-striped.table-hover.table-bordered
+      thead
+        tr
+          th Name
+          th Ordinate
+          th Province kind
+          th
+          th
+          th
+
+      tbody
+        - @provincials.each do |provincial|
+          tr
+            td = provincial.name
+            td = provincial.ordinate
+            td = provincial.province_kind
+            td = link_to 'Show', admin_provincial_path(provincial)
+            td = link_to 'Edit', edit_admin_provincial_path(provincial)
+            td = link_to 'Destroy', admin_provincial_path(provincial), data: { confirm: 'Are you sure?' }, method: :delete
+
+    br
+    .btn.btn-defautl
+      = link_to 'New Provincial', new_admin_provincial_path

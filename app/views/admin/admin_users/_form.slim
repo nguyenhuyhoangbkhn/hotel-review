@@ -1,0 +1,64 @@
+= simple_form_for [:admin, @admin_user], html: {class: "form-horizontal"}, wrapper: :horizontal_form do |f|
+  = f.error_notification
+  .row
+    .col-md-12
+      .row
+        .col-sm-6
+          .form-group
+            .col-sm-3
+              = f.label :name, t(".name"), class: "control-label"
+            .col-sm-9
+              = f.input_field :name, class: "form-control"
+          .form-group
+            .col-sm-3
+              = f.label :email, t(".email"), class: "control-label"
+            .col-sm-9
+              = f.input_field :email, class: "form-control"
+          .form-group
+            .col-sm-3
+              = f.label :tel, t(".tel"), class: "control-label"
+            .col-sm-9
+              = f.input_field :tel, class: "form-control"
+          .form-group
+            .col-sm-3
+              = f.label :birthday, t(".birthday"), class: "control-label"
+            .col-sm-9.form-inline
+              = f.input_field :birthday, as: :date,
+                include_blank: true, start_year: Date.today.year - 10,
+                end_year: Date.today.year + 10, class: "form-control"
+        .col-sm-6
+          .form-group
+            .col-sm-3
+              = f.label :job, t(".job"), class: "control-label"
+            .col-sm-9
+              = f.input_field :job, class: "form-control"
+          .form-group
+            .col-sm-3
+              = f.label :edu, t(".edu"), class: "control-label"
+            .col-sm-9
+              = f.input_field :edu, class: "form-control"
+          .form-group
+            .col-sm-3
+              = f.label :bio, t(".bio"), class: "control-label"
+            .col-sm-9
+              = f.input_field :bio, class: "form-control"
+          .form-group
+            .col-sm-3
+              label Avatar
+            .col-sm-9
+              = f.fields_for :avatar, @admin_user.avatar do |avatar|
+                = avatar.input_field :picture, as: :file
+      .row
+        .col-sm-6
+          .form-group
+            .col-sm-3
+              = f.label :password, t(".password"), class: "control-label"
+            .col-sm-9
+              = f.input_field :password, class: "form-control", placeholder: "password"
+          .form-group
+            .col-sm-3
+            .col-sm-9
+              = f.input_field :password_confirmation, class: "form-control", placeholder: "password_confirmation"
+
+  .btn.btn-defautl.btn-primary style="margin-top: 50px;"
+    = f.button :submit

@@ -1,0 +1,28 @@
+h1 Listing districts
+.row
+  .col-sm-12
+    table.table.table-striped.table-hover.table-bordered
+      thead
+        tr
+          th Name
+          th Ordinate
+          th District kind
+          th Provincial
+          th
+          th
+          th
+
+      tbody
+        - @districts.each do |district|
+          tr
+            td = district.name
+            td = district.ordinate
+            td = district.district_kind
+            td = district.provincial_id
+            td = link_to 'Show', admin_district_path(district)
+            td = link_to 'Edit', edit_admin_district_path(district)
+            td = link_to 'Destroy', admin_district_path(district), data: { confirm: 'Are you sure?' }, method: :delete
+
+    br
+    .btn.btn-defautl
+      = link_to 'New District', new_admin_district_path

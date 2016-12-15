@@ -1,0 +1,72 @@
+ol.breadcrumb
+  li= link_to "Home", root_path
+  li= link_to "User", admin_users_path
+  li.active Show Users
+
+.box.box-primary
+  .box-body
+    .row
+      .col-md-12
+        .panel.panel-default
+          .panel-body
+            .row style="margin-bottom: 30px;"
+              .form-group
+                .col-md-6
+                  #myCarousel.carousel.slide data-ride="carousel"
+                    .carousel-inner role="listbox"
+                      - unless @user.avatar.nil?
+                        .item.active
+                          = image_tag @user.avatar.picture, class: "img-thumbnail", width: 250, height: 250
+
+                .col-md-6
+                  .form-group
+                    h2
+                      = @user.name
+                  .form-group
+                    label
+                      strong Email :
+                    = @user.email
+                  .form-group
+                    label
+                      strong Address:
+                    = @user.address
+                  .form-group
+                    label
+                      strong Birhtday:
+                    = @user.birthday
+                  .form-group
+                    label
+                      strong Job :
+                    = @user.job
+            .form-group
+              label
+                strong Introduction:
+              = @user.bio
+        .col-md-12
+          h4 User Action
+          - @user.comments.each do |comment|
+            .row style="margin-bottom: 10px;"
+              .col-sm-12
+                .form-group
+                  .col-sm-2
+                    - unless  comment.picture.file.nil?
+                      = image_tag comment.picture, height: "100", with: "100"
+                  .col-sm-9
+                    .control-label
+                      = comment.content
+                    span.timestamp
+                      br
+                      | Post on :
+                      =< time_tag comment.created_at
+                    span
+                      br
+                      | Post in hotel:
+                      =< link_to comment.hotel.name, admin_hotel_path(comment.hotel)
+                  .col-sm-1
+                    btn.btn-default
+                      = link_to "delete", hotel_comment_path(comment.hotel, comment), method: :delete,
+                          data: { confirm: "You sure?" }
+      .col-md-12
+        = link_to 'Edit', edit_admin_user_path(@user)
+        '|
+        = link_to 'Back', admin_users_path

@@ -1,0 +1,13 @@
+ol.breadcrumb
+  li= link_to "Home", root_path
+  li= link_to "AdminUser", admin_admin_users_path
+  li.active Edit AdminUser
+
+.box.box-primary
+  .box-body
+    .row
+      .col-md-12
+        = render 'form'
+
+      .col-md-12
+        = link_to 'Back', admin_admin_users_path

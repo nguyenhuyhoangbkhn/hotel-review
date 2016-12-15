@@ -1,0 +1,18 @@
+.nested-fields
+  .form-group
+    .col-sm-3
+      = f.label :name, t(".name"), class: "control-label"
+    .col-sm-9.input-form
+      = f.input_field :name, class: "form-control"
+  .form-group
+    .col-sm-3
+      = f.label :village_id, t(".Village"), class: "control-label"
+    .col-sm-9.input-form
+      = f.input_field :village_id,
+        collection: Village.pluck(:name, :id),
+        class: "form-control", style: "width: 100%"
+  .form-group
+    .col-sm-3
+      = f.label :address, t(".address"), class: "control-label"
+    .col-sm-9.input-form
+      = f.input_field :address, class: "form-control"

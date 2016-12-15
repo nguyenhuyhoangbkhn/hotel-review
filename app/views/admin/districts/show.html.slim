@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @district.name
+p
+  strong Ordinate:
+  = @district.ordinate
+p
+  strong District kind:
+  = @district.district_kind
+p
+  strong Provincial:
+  = @district.provincial_id
+
+= link_to 'Edit', edit_admin_district_path(@district)
+'|
+= link_to 'Back', admin_districts_path

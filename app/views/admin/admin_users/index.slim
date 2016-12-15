@@ -1,0 +1,35 @@
+ol.breadcrumb
+  li= link_to "Home", root_path
+  li= link_to "AdminUser", admin_admin_users_path
+  li.active Manage AdminUser
+
+.box.box-primary
+  .box-body
+    .row
+      .col-sm-12
+        table.table.table-striped.table-hover.table-bordered
+          thead
+            tr
+              th Name
+              th Email
+              th Birthday
+              th Phone number
+              th Job
+              th.text-center[colspan="3"]= t(".actions")
+          tbody
+            - @admin_users.each do |admin_user|
+              tr
+                td = admin_user.name
+                td = admin_user.email
+                td = admin_user.birthday
+                td = admin_user.tel
+                td = admin_user.job
+                td = link_to 'Show', admin_admin_user_path(admin_user), class: "show-admin_user"
+                - if (current_admin_user == @admin_user) || current_admin_user.admin?
+                  td = link_to 'Edit', edit_admin_admin_user_path(admin_user), class: "show-admin_user"
+                  td = link_to 'Destroy', admin_admin_user_path(admin_user), data: { confirm: 'Are you sure?' }, method: :delete
+        .pull-right = paginate @admin_users
+      - if current_admin_user&.admin?
+        .col-sm-12
+          .btn.btn-default style="margin-top: 50px;"
+            = link_to 'New admin_user', new_admin_admin_user_path, class: "show-admin_user"

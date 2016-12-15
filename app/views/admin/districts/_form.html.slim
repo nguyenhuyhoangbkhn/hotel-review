@@ -1,0 +1,17 @@
+= simple_form_for [:admin, @district] do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :ordinate
+    = f.input :district_kind
+    .form-group
+      .col-sm-3
+        = f.label :provincial_id, t(".provincial_id"), class: "control-label"
+      .col-sm-9.input-form
+        = f.input_field :provincial_id,
+          collection: Provincial.pluck(:name, :id),
+          class: "form-control", style: "width: 100%"
+
+  .form-actions
+    = f.button :submit

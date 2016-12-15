@@ -1,0 +1,30 @@
+h1 Listing villages
+
+.row
+  .col-sm-12
+    table.table.table-striped.table-hover.table-bordered
+      thead
+        tr
+          th Name
+          th Ordinate
+          th Village kind
+          th District
+          th
+          th
+          th
+
+      tbody
+        - @villages.each do |village|
+          tr
+            td = village.name
+            td = village.ordinate
+            td = village.village_kind
+            td = village.district_id
+            td = link_to 'Show', admin_village_path(village)
+            td = link_to 'Edit', edit_admin_village_path(village)
+            td = link_to 'Destroy', admin_village_path(village), data: { confirm: 'Are you sure?' }, method: :delete
+
+    br
+
+    .btn.btn-defautl
+      = link_to 'New Village', new_admin_village_path

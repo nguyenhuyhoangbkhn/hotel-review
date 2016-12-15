@@ -1,0 +1,16 @@
+.row
+  - @hotels.each do |hotel|
+    .col-sm-4
+      .well.well-sm
+        = image_tag hotel.attachments.first.picture,  class: "img-responsive img-home-content",
+          alt:"Cinque Terre"
+        .title-hotel
+          h3.text-center
+            = link_to hotel.name, admin_hotel_path(hotel), class: "show-hotel"
+        .row
+          .col-sm-7
+            .star-rating data-score="#{hotel.avg_rate}"
+          .col-sm-5
+            = hotel&.price
+            label $
+        /! hien thi duoi dang star

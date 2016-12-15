@@ -1,0 +1,48 @@
+ol.breadcrumb
+  li= link_to "Home", root_path
+  li= link_to "AdminUser", admin_admin_users_path
+  li.active Show AdminUser
+
+.box.box-primary
+  .box-body
+    .row
+      .col-md-12
+        .panel.panel-default
+          .panel-body
+            .row style="margin-bottom: 30px;"
+              .form-group
+                .col-md-6
+                  #myCarousel.carousel.slide data-ride="carousel"
+                    .carousel-inner role="listbox"
+                      - unless @admin_user.avatar.nil?
+                        .item.active
+                          = image_tag @admin_user.avatar.picture, class: "img-thumbnail", width: 250, height: 250
+
+                .col-md-6
+                  .form-group
+                    h2
+                      = @admin_user.name
+                  .form-group
+                    label
+                      strong Email :
+                    = @admin_user.email
+                  .form-group
+                    label
+                      strong Address:
+                    = @admin_user.address
+                  .form-group
+                    label
+                      strong Birhtday:
+                    = @admin_user.birthday
+                  .form-group
+                    label
+                      strong Job :
+                    = @admin_user.job
+            .form-group
+              label
+                strong Introduction:
+              = @admin_user.bio
+      .col-md-12
+        = link_to 'Edit', edit_admin_admin_user_path(@admin_user)
+        '|
+        = link_to 'Back', admin_admin_users_path

@@ -1,0 +1,20 @@
+.row
+  .col-xs-10.col-xs-offset-1.col-sm-8.col-sm-offset-2.col-md-4.col-md-offset-4
+    .login-panel.panel.panel-default
+      .panel-heading Log in
+      .text-center.margin-top-15
+        = render partial: "shared/flash_messages", flash: flash
+      .panel-body
+        = simple_form_for resource, as: resource_name, url: session_path(resource_name), role: "form" do |f|
+          .form-group
+            = f.input :email, placeholder: "Email", label: false
+          .form-group
+            = f.input :password, placeholder: "Password", label: false
+          .form-froup
+            .row
+              .col-sm-1
+                = f.check_box :remember_me, {}, true, false
+              .col-sm-10
+                = f.label "Remember Me", class: "control-label"
+          = f.button :submit, "Sign In", class: "btn btn-primary btn-block btn-flat"
+

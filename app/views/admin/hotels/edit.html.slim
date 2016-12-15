@@ -1,0 +1,14 @@
+ol.breadcrumb
+  li= link_to "Home", root_path
+  li= link_to "Hotel", admin_hotels_path
+  li.active Edit Hotels
+
+
+.box.box-primary
+  .box-body
+    .row
+      .col-md-12
+        = render 'form'
+
+    = link_to 'Back', admin_hotels_path
+

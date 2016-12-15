@@ -1,0 +1,17 @@
+= simple_form_for [:admin, @village] do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :ordinate
+    = f.input :village_kind
+    .form-group
+      .col-sm-3
+        = f.label :district_id, t(".district_id"), class: "control-label"
+      .col-sm-9.input-form
+        = f.input_field :district_id,
+          collection: District.pluck(:name, :id),
+          class: "form-control", style: "width: 100%"
+
+  .form-actions style="margin-bottom: 30px; margin-top: 30px;"
+    = f.button :submit

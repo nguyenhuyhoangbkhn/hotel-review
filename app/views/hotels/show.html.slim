@@ -1,0 +1,152 @@
+.container
+  .row
+    .col-md-12
+      h2
+        = @hotel.name
+    .col-md-6
+      ul.list-inline
+        li
+          .star-rating data-score="#{@hotel.avg_rate}"
+        li
+          em = "Has #{@hotel.reviews.length} reviews for hotel"
+  .row
+    .col-md-12 style="margin-bottom: 30px;"
+      #myCarousel.carousel.slide data-ride="carousel"
+        .carousel-inner role="listbox"
+          - unless @hotel.attachments.nil?
+            .item.active
+              = image_tag @hotel.attachments.first.picture, class: "img-thumbnail"
+            - @hotel.attachments.each do |attachment|
+              .item
+                = image_tag attachment.picture
+        /! Left and right controls
+        a.left.carousel-control data-slide="prev" href="#myCarousel" role="button"
+          span.glyphicon.glyphicon-chevron-left
+          span.sr-only Previous
+        a.right.carousel-control data-slide="next" href="#myCarousel" role="button"
+          span.glyphicon.glyphicon-chevron-right
+          span.sr-only Next
+  .row
+    .col-md-12
+      .row.form-intro-detail-hotel
+        .col-md-6
+          ul.list-inline
+              li
+                span
+                  i.glyphicon.glyphicon-map-marker
+                - @hotel.destination_addresses.each do |address|
+                  =< address.village.name
+                  |  |
+                  =< address.address
+          ul.list-inline
+            li
+              span
+                i.fa.fa-link
+              - @hotel.website
+            |  |
+            li
+              span
+                i.fa.fa-phone
+              - @hotel.phone_number
+        .col-md-6
+          ul.list-inline
+            li
+              span
+                i.fa.fa-globe
+              =< @hotel.hotel_kind
+            |  |
+            li
+              span
+                i.fa.fa-usd
+              =< @hotel.price
+
+          ul.list-inline
+            li
+              span
+                i.fa.fa-home
+              | Count Room:
+              =< @hotel.countRoom
+    .col-md-12.form-intro-detail-hotel style="margin-bottom: 30px;"
+      span
+        i.fa.fa-info-circle
+      | Introduction about hotel
+      br
+      .text-intro style="margin-top: 10px;"
+        =< @hotel.introduction.html_safe
+
+  hr
+  .row style="margin-top: 20px;"
+    .col-sm-6
+      .form-group
+        - if user_signed_in?
+          p Write your comment in bellow form
+        - else
+          p Please sigin to do write your comment
+      #comment-form
+        = render 'shared/comment_form' if user_signed_in?
+    .col-sm-6.text-right
+      .form-group
+        - if user_signed_in?
+          - if current_user.reviews.where(hotel_id: @hotel.id).present?
+            .star-rating data-score="#{@hotel.reviews.where(user_id: current_user.id).first.rating}"
+            = link_to "you are rated, are you rerate this hotel", "#", data: {target: "#js-rerating", toggle: "modal"}
+          - else
+            = link_to "Rate this Hotel", "#", data: {target: "#js-rerating", toggle: "modal"}
+        - else
+          = "sigin to do rate hotel"
+  .row style="margin-top: 20px;"
+    .col-sm-8
+      - if @hotel.comments.any?
+        ol.hotel.row
+          #comments
+            = render @comments
+        / = paginate @comments
+    .col-sm-4
+      .top-hotel
+        .panel-title
+          .text-center style=""
+            .header 
+                h2 Top rate hotels
+        .row
+          - @hotels.each do |hotel|
+            .well.well-sm
+              = image_tag hotel.attachments.first.picture,  class: "img-responsive img-home-content",
+                alt:"Cinque Terre"
+              .title-hotel
+                h3.text-center
+                  = link_to hotel.name, hotel_path(hotel), class: "show-hotel"
+              .row
+                .col-sm-7
+                  .star-rating data-score="#{hotel.avg_rate}"
+                .col-sm-5
+                  = hotel&.price
+                  label $
+
+  - if user_signed_in?
+    .modal.inmodal.fade#js-rerating tabindex="-1" role="dialog" aria-hidden="true"
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close type="button" data-dismiss="modal"
+              span aria-hidden="true" ×
+            h4.modal-title Rating hotel
+
+          .modal-body
+            - if @review.persisted?
+              = form_for @review, url: review_path, method: :patch do |f|
+                #star-rating
+                = f.hidden_field :hotel_id, value: @hotel.id
+                .modal-footer
+                  button.btn.btn-default type="button" data-dismiss="modal"
+                    = t ".cancel"
+                  .btn.btn-primary
+                    = f.submit "OK", class: "rate-success"
+            - else
+              = form_for @review, url: reviews_path do |f|
+                #star-rating
+                = f.hidden_field :hotel_id, value: @hotel.id
+                .modal-footer
+                  button.btn.btn-default type="button" data-dismiss="modal"
+                    = t ".cancel"
+                  .btn.btn-primary
+                    = f.submit "OK", class: "rate-success"

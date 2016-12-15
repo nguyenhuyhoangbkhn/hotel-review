@@ -1,0 +1,39 @@
+#myCarousel.carousel.slide data-ride="carousel"
+  .carousel-inner.form-slide-img role="listbox"
+    - unless @top_hotels.first.attachments.nil?
+      .item.active
+        = image_tag @top_hotels.first.attachments.first.picture, class: "img-thumbnail"
+      - @top_hotels.first.attachments.each do |attachment|
+        .item
+          = link_to hotel_path(@top_hotels.first) do
+            = image_tag attachment.picture, class: "img-thumbnail"
+            .carousel-caption
+              h3 Flowers
+              | Beatiful flowers in Kolymbari, Crete
+
+  a.left.carousel-control data-slide="prev" href="#myCarousel" role="button"
+    span.glyphicon.glyphicon-chevron-left
+    span.sr-only Previous
+  a.right.carousel-control data-slide="next" href="#myCarousel" role="button"
+    span.glyphicon.glyphicon-chevron-right
+    span.sr-only Next
+
+.row style="margin-top: 50px;"
+  .col-sm-1
+  .col-sm-10
+    - @hotels.each do |hotel|
+      .col-sm-4
+        .well.well-sm.item-hotel
+          = image_tag hotel.attachments.first.picture,  class: "img-responsive img-home-content",
+            alt:"Cinque Terre"
+          .title-hotel
+            h3.text-center
+              = link_to hotel.name, hotel_path(hotel)
+          .row
+            .col-sm-7
+              .star-rating data-score="#{hotel.avg_rate}"
+            .col-sm-5
+              = hotel&.price
+              label $
+          /! hien thi duoi dang star
+  .col-sm-1

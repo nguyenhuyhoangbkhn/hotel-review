@@ -1,0 +1,1 @@
+json.array! @provincials, partial: 'provincials/provincial', as: :provincial

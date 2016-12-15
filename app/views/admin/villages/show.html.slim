@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @village.name
+p
+  strong Ordinate:
+  = @village.ordinate
+p
+  strong Village kind:
+  = @village.village_kind
+p
+  strong District:
+  = @village.district_id
+
+= link_to 'Edit', edit_admin_village_path(@village)
+'|
+= link_to 'Back', admin_villages_path

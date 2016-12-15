@@ -1,0 +1,358 @@
+// Place all the styles related to the Hotels controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#navbarnav{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+ #main {
+display: inline-block;
+width: 100%;
+margin-top: 10px;
+border-bottom: 1px solid #bfb8b2;
+}
+.row {
+margin-left: auto;
+margin-right: auto;
+}
+.main_inner {
+  margin: 20px 0px 20px 0px;
+  padding: 0px 0px 20px 0px;
+
+}
+.main_inner img:hover {
+  box-shadow: 0px 0px 6px #8fd0b9;
+  -moz-box-shadow:0px 0px 6px rgba(0, 0, 0, 10);
+  -webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 10);
+}
+.main_inner h3 {
+color: #474747;
+font-size: 17px;
+font-weight: bold;
+}
+.main_inner > p {
+color: #474747;
+float: left;
+font-size: 13px;
+line-height: 25px;
+width: 100%;
+}
+.main_inner img {
+border: 1px solid #c7c7c7;
+border-radius: 5px;
+display: inline-block;
+padding: 5px;
+width: 100%;
+box-shadow: 0.5px 0.5px 0.5px #8fd0b9;
+-moz-box-shadow: 2px 2px 2px #8fd0b9;
+-webkit-box-shadow: 2px 2px 2px #8fd0b9;
+}
+
+blockquote {
+  font-size: 14px;
+}
+.clear {
+  clear: both;
+}
+.list-post{
+  margin-bottom: 100px;
+}
+.page-header{
+  width: 100%;
+  height: 100%;
+}
+div.page-header.title{
+  margin: 0px 0px 0px 0px;
+}
+.glyphicon.glyphicon-folder-open{
+  margin-right: 20px;
+}
+#tags{
+  margin-right: auto;
+  float: right;
+  margin-bottom: 20px;
+}
+
+.tags{
+  background-color: #666;
+  margin-right: 15px;
+  margin-top: auto;
+  clear: fixed;
+  margin: 0px 0px 0px 0px;
+  padding: 3px 6px 3px 6px;
+  color: white;
+}
+.tags :hover{
+  background-color: #025587;
+}
+.meta {font-size: 11px; color: #666; float: right; margin: auto;}
+.badge{
+  background-color:   #D3D3D3;
+}
+
+
+/** Panel**/
+
+.panel {
+  background-color: lavender;
+}
+
+
+/*** USER  **/
+
+#form-user{
+  float: left;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  clear: both;
+/* border-style: solid ;
+border-width: 1.5px;
+border-color: #E6E6FA ;
+border-radius: 2px;
+background: #F5F5F5; */
+}
+#form-user img{
+  box-shadow: 2px 2px 2px #666;
+-moz-box-shadow: 2px 2px 2px #666;
+-webkit-box-shadow: 2px 2px 2px #666;
+border-radius: 2px;
+}
+
+#form-user span {
+  color: #c23903;
+}
+
+div.metadata {
+  font-size: .9em;
+  text-align: right;
+  float: right;
+  margin: 10px 0px 0px 0px;
+}
+
+div.metadata a {
+  color: #ff6600;
+  padding-left: 15px;
+  background: url(images/bullets.png) no-repeat 0 50%;
+}
+
+/** Local **/
+.local{
+  font-size: 15px;
+  background: #025587;
+  padding: 5px 20px 5px 20px;
+}
+.crumb{
+  color: #FFF;
+}
+/** Question Pages **/
+.question-pages {
+  background-color: #fff;
+  padding-left: 0px;
+  padding-right: 0px;
+  border: 1px solid lavender;
+  box-shadow: 0.5px 0.5px 0.5px 0.5px #8fd0b9;
+-moz-box-shadow: 0.5px 0.5px 0.5px #8fd0b9;
+-webkit-box-shadow: 0.5px 0.5px 0.5px #8fd0b9;
+}
+
+.question-pages.home{
+  background-color:  #fff;
+}
+.bg-success{
+  font-family: monospace;
+  font-size: 13px;
+  padding: 5px 15px 5px 15px;
+  margin-bottom: 0px;
+}
+
+.question-pages.local{
+  background: #fff no-repeat 0 50%;
+  margin-left: 0px;
+}
+.question-pages h3{
+  margin-bottom: 20px;
+}
+.question-pages {
+  background-color: #fff;
+  padding-left: 0px;
+  padding-right: 0px;
+  border: 1px solid #bfb8b2;
+}
+.pagination.pagination-sm{
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
+
+
+div#pagination1 {
+  margin: 2px 0px 0px 20px;
+}
+div#pagination {
+  margin: 2px 0px 0px 0px;
+}
+.post{
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.change1{
+  float: right;
+}
+.page-header{
+  width: 100%;
+  height: 100%;
+  margin-top: auto
+}
+div.meta {font-size: 11px; color: #666; float: right; margin: auto;}
+
+/** Single-Pages **/
+.single-pages {
+  background-color: #fff;
+  padding-left: 0px;
+  padding-right: 0px;
+  border: 1px solid lavender;
+}
+
+.single-pages.home{
+  background-color:  #fff;
+}
+
+.main-post{
+  margin-bottom: 50px;
+
+  margin: 20px 20px 20px 20px;
+}
+.single-pages.local{
+  background: #fff no-repeat 0 50%;
+  margin-left: 0px;
+}
+.single-pages h3{
+  margin-bottom: 20px;
+}
+.pagination.pagination-sm{
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
+button.btn.btn-default.btn-sm{
+  margin-left: 0px;
+}
+pre{
+  float: left;
+  text-align: left;
+}
+.main-rep{
+  border-bottom: 1px solid #bfb8b2;
+  margin-bottom: 10px;
+}
+.main-rep-cmt{
+  margin-bottom: 10px;
+  padding-right: 0px;
+}
+div#form-user.row{
+  border-bottom: 1px solid lavender;
+}
+section{
+  margin: 20px 20px 20px 20px;
+}
+.metadata {font-size: 12px; color: #666; float: right; margin: auto;
+    border-bottom: 1px solid #bfb8b2;
+}
+
+.meta.share{
+  float: left;
+  margin-bottom: 30px;
+}
+.change{
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+div.icon-share{
+  float: right;
+  margin-bottom: 0px;
+  padding-left: 10px;
+  margin-right: 0px;
+}
+.icon-share img{
+  padding-left: 2px;
+}
+.form-control{
+  width: 100%;
+}
+.tag{
+  margin-top: 20px;
+}
+.tag a{
+  padding: 3px 5px 3px 5px;
+
+}
+.reply{
+  border-bottom: 1px dotted #bfb8b2;
+  margin: 20px 20px 20px 20px;
+  padding-top: 5px;
+}
+.like{
+  margin-bottom: 10px;
+}
+
+li.act > a:hover,  li.act > a:focus , li.act > a:visited{
+    color: #555;
+    cursor: default;
+    background-color: #FFF;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #DDD #DDD transparent;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+}
+.font-home-hotel{
+  font-size: 24px;
+}
+.font-header-gmail{
+  line-height: 34px;
+}
+.container-fluid{
+  min-height: 800px;
+}
+.top-hotel{
+  background-color: #F0F0E9;
+}
+.form-slide-img{
+  padding-top:5px;
+  padding-left:15%;
+  padding-right:15%;
+}
+.item-hotel{
+    padding-top: 5% !important;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+    height:340px;
+}
+.form-intro-detail-hotel{
+  font-size:18px !important;
+}
+.btn-search-form{
+      margin-top: 10px;
+    float: right;
+    background-color: #fff;
+    border: 1px gray solid;
+    width: 165px;
+    font-size: 20px;
+    height: 30px;
+    border-radius: 15px;
+}
+.modal-form{
+  padding-top:75px;
+  padding-left:10%;
+  padding-right:10%;
+}
+.shop-menu{
+  font-size:20px;
+}

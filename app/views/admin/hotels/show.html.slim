@@ -1,0 +1,84 @@
+ol.breadcrumb
+  li= link_to "Home", root_path
+  li= link_to "Hotel", admin_hotels_path
+  li.active Show Hotels
+
+.box.box-primary
+  .box-body
+    .row
+      .col-md-10
+        .panel.panel-default
+          .panel-body
+            .row style="margin-bottom: 30px;"
+              .form-group
+                .col-md-6
+                  #myCarousel.carousel.slide data-ride="carousel"
+                    .carousel-inner role="listbox"
+                      - unless @hotel.attachments.nil?
+                        .item.active
+                          = image_tag @hotel.attachments.first.picture, class: "img-thumbnail"
+                        - @hotel.attachments.each do |attachment|
+                          .item
+                            = image_tag attachment.picture, class: "img-thumbnail"
+
+                    a.left.carousel-control data-slide="prev" href="#myCarousel" role="button"
+                      span.glyphicon.glyphicon-chevron-left
+                      span.sr-only Previous
+                    a.right.carousel-control data-slide="next" href="#myCarousel" role="button"
+                      span.glyphicon.glyphicon-chevron-right
+                      span.sr-only Next
+
+                  .star-rating data-score="#{@hotel.avg_rate}"
+                  em = "#{@hotel.reviews.length} reviews"
+
+                .col-md-6
+                  .form-group
+                    h2
+                      = @hotel.name
+                  .form-group
+                    .star-rating data-score="#{@hotel.avg_rate}"
+                    = link_to "rerating", "#", data: {target: "#js-rerating", toggle: "modal"}
+                  .form-group
+                    label
+                      strong Hotel Kind :
+                    = @hotel.hotel_kind
+                  .form-group
+                    label
+                      strong Price :
+                    = " #{@hotel.price} $"
+                  .form-group
+                    label
+                      strong countRoom :
+                    = @hotel.countRoom
+            .form-group
+              label
+                strong Address :
+              - @hotel.destination_addresses.each do |address|
+                = address.village.name
+            .form-group
+              label
+                strong Introduction:
+              = @hotel.introduction.html_safe
+
+      = link_to 'Edit', edit_admin_hotel_path(@hotel)
+      '|
+      = link_to 'Back', admin_hotels_path
+
+.modal.inmodal.fade#js-rerating tabindex="-1" role="dialog" aria-hidden="true"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal"
+          span aria-hidden="true" ×
+        h4.modal-title Rating hotel
+
+      .modal-body
+        = form_for @review, url: admin_review_path, method: :patch do |f|
+          #star-rating
+          = f.hidden_field :hotel_id, value: @hotel.id
+          .modal-footer
+            button.btn.btn-default type="button" data-dismiss="modal"
+              = t ".cancel"
+            .btn.btn-primary
+              = f.submit "OK"
+

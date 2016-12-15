@@ -1,0 +1,5 @@
+= form_for [@hotel, @comment] do |f|
+  .form-group
+    = f.text_area :content, placeholder: "Input your comment here . ", class: "form-control"
+  = f.file_field :picture
+  = f.submit "Comment", class: "btn btn-primary margin-top-10"

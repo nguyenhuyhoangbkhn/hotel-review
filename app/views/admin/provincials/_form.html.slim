@@ -1,0 +1,12 @@
+= simple_form_for [:admin, @provincial] do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :ordinate
+    = f.input :province_kind
+    = f.fields_for :districts, @provincial.districts do |ff|
+      = ff.input :name
+
+  .form-actions
+    = f.button :submit
